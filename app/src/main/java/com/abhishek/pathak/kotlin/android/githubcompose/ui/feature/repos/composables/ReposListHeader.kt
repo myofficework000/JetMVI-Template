@@ -81,8 +81,9 @@ fun ScoreSession(userDetail: UserDetail) {
 
 @Composable
 fun UserDetailSession(userDetail: UserDetail) {
+
     Text(
-        text = userDetail.name,
+        text = userDetail.name.orEmpty(),
         style = MaterialTheme.typography.h5,
         fontWeight = FontWeight.Bold
     )
