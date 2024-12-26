@@ -29,7 +29,7 @@ The sample app presents a modern Android application architecture, emphasizing s
     * [Android Architecture components](https://developer.android.com/topic/libraries/architecture) ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel), [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation))
     * [Android KTX](https://developer.android.com/kotlin/ktx) - Jetpack Kotlin extensions
     
-## Light and Dark mode
+## Light and Dark mode compatible
 <img src="misc/demo_light_mode.gif" width="360" height="820"> <img src="misc/demo_dark_mode.gif" width="360" height="820">
 
 | Dark Theme UI                            | Light Theme UI                              |
