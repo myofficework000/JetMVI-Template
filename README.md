@@ -1,4 +1,4 @@
-# GithubCompose (Jetpack Compose + MVI + Clean Code + TDD)
+# Github App (Jetpack Compose + MVI + Clean Code + TDD)
 
 ![Language](https://img.shields.io/github/languages/top/cortinico/kotlin-android-template?color=blue&logo=kotlin) 
 **GithubCompose** is a modern **Android showcase project** that demonstrates best development practices using cutting-edge technologies like [**Jetpack Compose**](https://developer.android.com/jetpack/compose), [**Kotlin Flow**](https://developer.android.com/kotlin/flow), and [**Koin**](https://insert-koin.io/) for dependency injection. It follows the **MVI (Model-View-Intent) architecture**, ensuring **scalability, maintainability, and testability**.  
