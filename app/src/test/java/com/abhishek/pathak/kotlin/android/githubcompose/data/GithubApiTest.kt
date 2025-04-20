@@ -15,6 +15,15 @@ import java.util.concurrent.TimeUnit
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
+/**
+ * Unit tests for [GithubApi] using [MockWebServer] to simulate GitHub API responses.
+ *
+ * These tests verify correct behavior for:
+ * - Fetching a list of users
+ * - Fetching a single user detail
+ * - Fetching user repositories
+ * - Handling error responses (e.g., 404 Not Found)
+ */
 class GithubApiTest {
 
     private val mockWebService = MockWebServer()

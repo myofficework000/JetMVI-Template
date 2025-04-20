@@ -25,5 +25,4 @@ class UsersContract {
             data class ToRepos(val userId: String): Navigation()
         }
     }
-
 }
