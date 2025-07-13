@@ -1,4 +1,4 @@
-# GitHubCompose 🚀  
+# GitHubCompose 
 **Jetpack Compose + MVI + Clean Architecture + TDD**
 
 ![Language](https://img.shields.io/github/languages/top/cortinico/kotlin-android-template?color=blue&logo=kotlin)
