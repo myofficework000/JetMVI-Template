@@ -6,7 +6,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/myofficework000/JetMVI-Template?style=social)  
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
 
-**GitHubCompose** is a modern **Android showcase app** built using [**Jetpack Compose**](https://developer.android.com/jetpack/compose), **MVI architecture**, **Kotlin Flow**, and **Clean Architecture** principles.  
+**GitHubCompose** is a modern **Android showcase app** built using [**Jetpack Compose**](https://developer.android.com/jetpack/compose), **MVI architecture**, **[Kotlin Flow](https://developer.android.com/kotlin/flow)**, and **Clean Architecture** principles.  
 It serves as a **production-grade reference project** focused on scalability, maintainability, and testability.
 
 
