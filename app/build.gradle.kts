@@ -5,6 +5,7 @@ plugins {
 
 android {
     compileSdk = AppConfig.compileSdk
+    namespace = "com.abhishek.pathak.kotlin.android.githubcompose"
 
     defaultConfig {
         applicationId = AppConfig.applicationId

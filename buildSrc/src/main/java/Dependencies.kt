@@ -8,8 +8,8 @@ object Dependencies {
     object ClassPath {
 
         object Version {
-            const val gradle = "7.0.4"
-            const val kotlin = "1.6.10"
+            const val gradle = "8.5"
+            const val kotlin = "1.9.23"
         }
 
         const val gradle = "com.android.tools.build:gradle:${Version.gradle}"
