@@ -1,22 +1,22 @@
 plugins {
     id(Dependencies.Plugins.application)
     id(Dependencies.Plugins.kotlinAndroid)
+    id("org.jetbrains.kotlin.plugin.compose") version "2.0.0"
+
+
 }
 
 android {
-    compileSdk = AppConfig.compileSdk
+    namespace = "com.abhishek.pathak.kotlin.android.githubcompose"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = AppConfig.applicationId
-        minSdk = AppConfig.minSdk
-        targetSdk = AppConfig.targetSdk
-        versionCode = AppConfig.versionCode
-        versionName = AppConfig.versionName
-
-        testInstrumentationRunner = AppConfig.androidTestInstrumentation
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        applicationId = "com.abhishek.pathak.kotlin.android.githubcompose"
+        minSdk = 23
+        targetSdk = 35
+        versionCode = 1
+        versionName = "1.0.0"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -28,23 +28,19 @@ android {
             )
         }
     }
-
     compileOptions {
-        sourceCompatibility = AppConfig.javaCompatibility
-        targetCompatibility = AppConfig.javaCompatibility
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = AppConfig.javaJvmTarget
+        jvmTarget = "11"
     }
 
     buildFeatures {
         compose = true
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = Dependencies.Android.Version.compose
-    }
 
     packagingOptions {
         resources {
@@ -53,61 +49,72 @@ android {
     }
 
     testOptions {
-        unitTests.apply {
-            isReturnDefaultValues = true
-        }
-    }
-
-    sourceSets {
-        getByName("main").java.srcDirs("src/main/resources", "src/main/test/resources")
-        getByName("test").java.srcDirs("src/test/resources")
-        getByName("androidTest").java.srcDirs("src/androidTest/resources")
+        unitTests.isReturnDefaultValues = true
     }
 }
 
 dependencies {
-    // Android
-    implementation(Dependencies.Android.coreKts)
+    // Compose BOM
+    implementation(platform("androidx.compose:compose-bom:2024.09.00"))
+    androidTestImplementation(platform("androidx.compose:compose-bom:2024.09.00"))
+
+    // Core
+    implementation(Dependencies.Android.coreKtx)
     implementation(Dependencies.Android.appCompat)
     implementation(Dependencies.Android.activityCompose)
+
+    // Compose
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.ui:ui-graphics")
+    implementation("androidx.compose.material:material")
+    implementation("androidx.compose.material:material-icons-extended")
+    implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    debugImplementation("androidx.compose.ui:ui-tooling")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    implementation("io.coil-kt:coil-compose:2.5.0")
+
+
+    // Lifecycle + Navigation
+    implementation(Dependencies.Android.lifecycleViewModelKtx)
+    implementation(Dependencies.Android.lifecycleRuntimeKtx)
+    implementation(Dependencies.Android.lifecycleViewModelCompose)
     implementation(Dependencies.Android.navigationCompose)
 
-    implementation(Dependencies.Android.composeUi)
-    implementation(Dependencies.Android.composeMaterial)
-    implementation(Dependencies.Android.composeMaterialIconsExtended)
-    implementation(Dependencies.Android.composeUiTooling)
-    implementation(Dependencies.Android.composeUiToolingPreview)
-
-    implementation(Dependencies.Android.lifecycleRuntimeKtx)
-    implementation(Dependencies.Android.lifecycleViewModelKtx)
-    implementation(Dependencies.Android.lifecycleExtensions)
-    implementation(Dependencies.Android.lifecycleViewModelCompose)
-
-    // Third Party
-    implementation(Dependencies.ThirdParty.coilCompose)
-    implementation(Dependencies.ThirdParty.androidMaterial)
-
-    implementation(Dependencies.ThirdParty.kotlinxCoroutinesCore)
-    implementation(Dependencies.ThirdParty.kotlinxCoroutinesAndroid)
-
-    implementation(Dependencies.ThirdParty.retrofit)
-    implementation(Dependencies.ThirdParty.retrofitConverterGson)
-
+    // Koin
     implementation(Dependencies.ThirdParty.koinAndroid)
-    implementation(Dependencies.ThirdParty.koinAndroidxCompose)
+    implementation(Dependencies.ThirdParty.koinCompose)
 
-    // Test
+    // Coroutines
+    implementation(Dependencies.ThirdParty.coroutinesCore)
+    implementation(Dependencies.ThirdParty.coroutinesAndroid)
+
+    // Retrofit
+    implementation(Dependencies.ThirdParty.retrofit)
+    implementation(Dependencies.ThirdParty.retrofitGson)
+
+
+
+    // Material
+    implementation(Dependencies.ThirdParty.material)
+
+    // Unit Test
     testImplementation(Dependencies.Test.junit)
-    testImplementation(Dependencies.Test.roboeletric)
     testImplementation(Dependencies.Test.mockk)
-    testImplementation(Dependencies.Test.kotlinxCoroutinesTest)
+    testImplementation(Dependencies.Test.coroutinesTest)
+    testImplementation(Dependencies.Test.okhttpMockWebServer)
     testImplementation(Dependencies.Test.koinTest)
-    testImplementation(Dependencies.Test.okHttp3MockWebServer)
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
 
-    // Android Test
+    // Android Instrumentation Test
     androidTestImplementation(Dependencies.AndroidTest.junit)
     androidTestImplementation(Dependencies.AndroidTest.espressoCore)
-    androidTestImplementation(Dependencies.AndroidTest.composeJunit)
-    debugImplementation(Dependencies.AndroidTest.composeUiTooling)
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+}
+configurations.all {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "org.jetbrains.kotlin") {
+            useVersion("2.0.0")
+            because("Force Kotlin 2.0.0 to avoid stdlib 2.2.0 conflicts from transitive dependencies")
+        }
+    }
 }
