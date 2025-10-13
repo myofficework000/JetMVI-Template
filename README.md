@@ -17,7 +17,7 @@ Designed as a reference for developers, this sample app highlights a **robust An
 
 ## Description
 
-* UI
+* UI/UX
     * [Compose](https://developer.android.com/jetpack/compose) declarative UI framework
     * [Material design](https://material.io/design)
 
