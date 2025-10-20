@@ -9,9 +9,6 @@
 **GitHubCompose** is a modern **Android showcase app** built using [**Jetpack Compose**](https://developer.android.com/jetpack/compose), **MVI architecture**, **[Kotlin Flow](https://developer.android.com/kotlin/flow)**, and **Clean Architecture** principles.  
 It serves as a **production-grade reference project** focused on scalability, maintainability, and testability.
 
-
-
-
 Designed as a reference for developers, this sample app highlights a **robust Android architecture**, seamlessly integrating state-of-the-art tools to create a **high-quality, production-ready codebase**.
 
 
