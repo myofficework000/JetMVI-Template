@@ -12,7 +12,7 @@ It serves as a **production-grade reference project** focused on scalability, ma
 Designed as a reference for developers, this sample app highlights a **robust Android architecture**, seamlessly integrating state-of-the-art tools to create a **high-quality, production-ready code-base**.
 
 
-## Description of tech Utilized
+## Description of tech Utilize
 
 * UI/UX
     * [Compose](https://developer.android.com/jetpack/compose) declarative UI framework
