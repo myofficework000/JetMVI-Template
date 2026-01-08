@@ -1,5 +1,5 @@
 # GitHub API
-**Jetpack Compose with MVI architecture with Clean code,  TDD  & MAD skills**
+**Jetpack Compose with MVI architecture with Clean code,  TDD & MAD skills**
 
 ![Language](https://img.shields.io/github/languages/top/cortinico/kotlin-android-template?color=blue&logo=kotlin)
 ![GitHub repo size](https://img.shields.io/github/repo-size/myofficework000/JetMVI-Template)  
