@@ -1,4 +1,4 @@
-# GitHub API usecase
+# GitHub API's usecase
 **Jetpack Compose with MVI architecture with Clean code,  TDD & MAD skill**
 
 ![Language](https://img.shields.io/github/languages/top/cortinico/kotlin-android-template?color=blue&logo=kotlin)
