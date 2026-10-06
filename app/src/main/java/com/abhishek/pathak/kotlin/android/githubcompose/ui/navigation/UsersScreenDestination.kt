@@ -5,11 +5,11 @@ import androidx.navigation.NavController
 import com.abhishek.pathak.kotlin.android.githubcompose.ui.feature.users.UsersContract
 import com.abhishek.pathak.kotlin.android.githubcompose.ui.feature.users.UsersViewModel
 import com.abhishek.pathak.kotlin.android.githubcompose.ui.feature.users.composables.UsersScreen
-import org.koin.androidx.compose.getViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun UsersScreenDestination(navController: NavController) {
-    val viewModel = getViewModel<UsersViewModel>()
+    val viewModel = koinViewModel<UsersViewModel>()
     UsersScreen(
         state = viewModel.viewState.value,
         effectFlow = viewModel.effect,

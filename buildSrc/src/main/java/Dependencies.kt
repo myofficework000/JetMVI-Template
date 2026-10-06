@@ -2,13 +2,12 @@ object Dependencies {
 
     object Plugins {
         const val application = "com.android.application"
-        const val kotlinAndroid = "org.jetbrains.kotlin.android"
     }
 
     object ClassPath {
         object Version {
-            const val gradle = "8.4.0"
-            const val kotlin = "2.0.0"
+            const val gradle = "9.4.0"
+            const val kotlin = "2.4.20"
         }
 
         const val gradle = "com.android.tools.build:gradle:${Version.gradle}"
@@ -18,10 +17,10 @@ object Dependencies {
     object Android {
 
         object Version {
-            const val coreKtx = "1.13.1"
-            const val appCompat = "1.6.1"
-            const val activityCompose = "1.10.1"
-            const val lifecycle = "2.6.2"
+            const val coreKtx = "1.19.0"
+            const val appCompat = "1.8.0"
+            const val activityCompose = "1.13.0"
+            const val lifecycle = "2.10.0"
         }
 
         const val coreKtx = "androidx.core:core-ktx:${Version.coreKtx}"
@@ -31,16 +30,16 @@ object Dependencies {
         const val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycle}"
         const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.lifecycle}"
         const val lifecycleViewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:${Version.lifecycle}"
-        const val navigationCompose = "androidx.navigation:navigation-compose:2.7.7"
+        const val navigationCompose = "androidx.navigation:navigation-compose:2.10.1"
     }
 
     object ThirdParty {
         object Version {
-            const val material = "1.11.0"
-            const val coil = "2.5.0"
-            const val coroutines = "1.7.3"
-            const val retrofit = "2.9.0"
-            const val koin = "3.5.3"
+            const val material = "1.14.0"
+            const val coil = "3.6.3"
+            const val coroutines = "1.11.0"
+            const val retrofit = "3.0.0"
+            const val koin = "4.2.2"
 
         }
 
@@ -59,8 +58,8 @@ object Dependencies {
     object Test {
         object Version {
             const val junit = "4.13.2"
-            const val mockk = "1.13.9"
-            const val okhttpMockWebServer = "4.12.0"
+            const val mockk = "1.14.11"
+            const val okhttpMockWebServer = "5.3.2"
         }
 
         const val junit = "junit:junit:${Version.junit}"
@@ -72,8 +71,8 @@ object Dependencies {
 
     object AndroidTest {
         object Version {
-            const val junit = "1.1.5"
-            const val espresso = "3.5.1"
+            const val junit = "1.3.0"
+            const val espresso = "3.7.0"
         }
 
         const val junit = "androidx.test.ext:junit:${Version.junit}"

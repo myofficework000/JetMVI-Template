@@ -5,12 +5,12 @@ import androidx.navigation.NavController
 import com.abhishek.pathak.kotlin.android.githubcompose.ui.feature.repos.ReposContract
 import com.abhishek.pathak.kotlin.android.githubcompose.ui.feature.repos.ReposViewModel
 import com.abhishek.pathak.kotlin.android.githubcompose.ui.feature.repos.composables.ReposScreen
-import org.koin.androidx.compose.getViewModel
+import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
 
 @Composable
 fun ReposScreenDestination(userId: String, navController: NavController) {
-    val viewModel = getViewModel<ReposViewModel> { parametersOf(userId) }
+    val viewModel = koinViewModel<ReposViewModel> { parametersOf(userId) }
     ReposScreen(
         state = viewModel.viewState.value,
         effectFlow = viewModel.effect,

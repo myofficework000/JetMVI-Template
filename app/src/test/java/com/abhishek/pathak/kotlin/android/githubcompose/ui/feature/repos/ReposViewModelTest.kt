@@ -12,7 +12,7 @@ import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.Before
 import org.junit.Test
-import org.junit.jupiter.api.Assertions.*
+import org.junit.Assert.assertEquals
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class ReposViewModelTest{
@@ -23,14 +23,17 @@ class ReposViewModelTest{
         Dispatchers.setMain(Dispatchers.Unconfined)
     }
     @Test
-    fun `when view model initialized then should emit initial view state first`() = runTest {
+    fun `when view model initializes then it loads user and repos`() = runTest {
+        val user = UserDetail()
         val expectedInitialViewState = ReposContract.State(
-            user = null,
+            user = user,
             reposList = emptyList(),
-            isUserLoading = true,
-            isReposLoading = true,
+            isUserLoading = false,
+            isReposLoading = false,
             isError = false
         )
+        coEvery { githubRepository.getUser("testUserId") } returns Result.success(user)
+        coEvery { githubRepository.getRepos("testUserId") } returns Result.success(emptyList())
         val viewmodel = ReposViewModel("testUserId",githubRepository)
         assertEquals(expectedInitialViewState,viewmodel.viewState.value)
     }

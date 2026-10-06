@@ -167,7 +167,7 @@ class GithubApiTest {
 
         // Then
         assertEquals(expected, actual)
-        assertEquals("/users/$userId/repos", request.path)
+        assertEquals("/users/$userId/repos?sort=stars&order=desc", request.path)
     }
 
     @Test

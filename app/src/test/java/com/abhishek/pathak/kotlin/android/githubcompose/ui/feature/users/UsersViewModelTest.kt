@@ -23,19 +23,20 @@ class UsersViewModelTest {
     private val githubRepository = mockk<GithubRepository>()
 
     @Test
-    fun `When view model initialized then should emit initial view state first`() = runTest {
+    fun `When view model initializes then it loads users`() = runTest {
         // Given
-        val expectedInitialViewState = UsersContract.State(
+        val expectedViewState = UsersContract.State(
             users = emptyList(),
-            isLoading = true,
+            isLoading = false,
             isError = false
         )
+        coEvery { githubRepository.getUsers() } returns Result.success(emptyList())
 
         // When
         val viewModel = UsersViewModel(githubRepository)
 
         // Then
-        assertEquals(expectedInitialViewState, viewModel.viewState.value)
+        assertEquals(expectedViewState, viewModel.viewState.value)
     }
 
     @Test

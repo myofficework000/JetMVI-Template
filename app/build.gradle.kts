@@ -1,19 +1,16 @@
 plugins {
     id(Dependencies.Plugins.application)
-    id(Dependencies.Plugins.kotlinAndroid)
-    id("org.jetbrains.kotlin.plugin.compose") version "2.0.0"
-
-
+    id("org.jetbrains.kotlin.plugin.compose") version Dependencies.ClassPath.Version.kotlin
 }
 
 android {
     namespace = "com.abhishek.pathak.kotlin.android.githubcompose"
-    compileSdk = 35
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.abhishek.pathak.kotlin.android.githubcompose"
-        minSdk = 23
-        targetSdk = 35
+        minSdk = 24
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -29,20 +26,15 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-
-    kotlinOptions {
-        jvmTarget = "11"
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     buildFeatures {
         compose = true
     }
 
-
-    packagingOptions {
+    packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
@@ -53,10 +45,16 @@ android {
     }
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+    }
+}
+
 dependencies {
     // Compose BOM
-    implementation(platform("androidx.compose:compose-bom:2024.09.00"))
-    androidTestImplementation(platform("androidx.compose:compose-bom:2024.09.00"))
+    implementation(platform("androidx.compose:compose-bom:2026.09.00"))
+    androidTestImplementation(platform("androidx.compose:compose-bom:2026.09.00"))
 
     // Core
     implementation(Dependencies.Android.coreKtx)
@@ -72,7 +70,8 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-    implementation("io.coil-kt:coil-compose:2.5.0")
+    implementation("io.coil-kt.coil3:coil-compose:${Dependencies.ThirdParty.Version.coil}")
+    implementation("io.coil-kt.coil3:coil-network-okhttp:${Dependencies.ThirdParty.Version.coil}")
 
 
     // Lifecycle + Navigation
@@ -104,6 +103,7 @@ dependencies {
     testImplementation(Dependencies.Test.coroutinesTest)
     testImplementation(Dependencies.Test.okhttpMockWebServer)
     testImplementation(Dependencies.Test.koinTest)
+    testImplementation("org.robolectric:robolectric:4.17")
 
     // Android Instrumentation Test
     androidTestImplementation(Dependencies.AndroidTest.junit)
@@ -113,8 +113,8 @@ dependencies {
 configurations.all {
     resolutionStrategy.eachDependency {
         if (requested.group == "org.jetbrains.kotlin") {
-            useVersion("2.0.0")
-            because("Force Kotlin 2.0.0 to avoid stdlib 2.2.0 conflicts from transitive dependencies")
+            useVersion(Dependencies.ClassPath.Version.kotlin)
+            because("Keep Kotlin artifacts aligned with the project toolchain")
         }
     }
 }
