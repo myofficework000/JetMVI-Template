@@ -5,36 +5,28 @@ on:
     branches: [master]
   pull_request:
     branches: [master]
-
   workflow_dispatch:
-    inputs:
-      branch:
-        description: Branch to build
-        required: false
-        default: master
 
 jobs:
   build:
     name: Build and test
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out source
         uses: actions/checkout@v7
-        with:
-          ref: ${{ inputs.branch || github.ref }}
 
       - name: Set up JDK 17
         uses: actions/setup-java@v6
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: "17"
 
-      # v4 installs command-line tools, accepts licenses, and exposes
-      # sdkmanager on PATH without requesting the retired SDK "tools" package.
+      # Explicitly override v3's obsolete default "tools" package.
       - name: Set up Android SDK
-        uses: android-actions/setup-android@v4
+        uses: android-actions/setup-android@v3
         with:
-          packages: 'platforms;android-37 build-tools;36.0.0'
+          packages: "platform-tools platforms;android-37 build-tools;36.0.0"
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v6
